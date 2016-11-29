@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Starbucks para outlook</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+    <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
+    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="Home.js" type="text/javascript"></script>
+	
+	<script>
+		
+		function validacion(){
+			var tama = document.getElementById("Tam").value;
+				
+			document.getElementByName("codigo").value=tam;
+				
+			if (tama == "1"){
+				document.getElementById("lab2").style.display="inline";
+				document.getElementById("Tam").style.border="blue";							
+			}
+		}	
+		
+	</script>
+	
+</head>
+<body>
+    <!-- Page content -->
+    <div id="content-header">
+		<div id="textoheader"><img src="http://www.starbucks.com/static/images/favicon.ico"></div>
+        <div class="textoheader"> Starbucks para Office</div>
+    </div>
+    <div id="content-main">
+        <div class="padding">
+            <p><strong>  Bienvenido a Starbucks.</strong></p>
+			<p><FONT id="lab1" Size="1" COLOR="#FF0000" style="display:none">Inserta una opción</FONT></p>
+			<select id ="Prod" onchange="myFunction()">
+				<option selected value="0">Elige una opción	</option>
+					<optgroup label="Cafe">
+					<option value="Expresso Americano">Expresso Americano</option>
+					<option value="Cafe del Dia">Cafe del Dia</option>
+					<option value="Cafe Mocha Blanco">Cafe Mocha Blanco</option>
+					<option value="Espresso">Espresso</option>
+					<option value="Caramel Macchiato">Caramel Macchiato</option>					
+				</optgroup>
+				<optgroup label ="Yogurts Frappuccino">
+					<option value="Yogurt Berry Frapuccino">Berry</option>
+					<option value="Yogurt Piña Frapuccino">Piña</option>
+					<option value="Yogurt Peach Frapuccino">Peach</option>
+				</optgroup>				
+			</select>
+			
+			<p></p>
+			<p><FONT id="lab2" Size="1" COLOR="#FF0000" style="display:none">Selecciona un tamaño</FONT></p>
+			 <select id="Tam" style="visibility:hidden;" onchange="ocult()">
+				 <option selected value="0">Tamaño </option>
+				 	<optgroup label="Cafe">
+     				<option value="Alto">Alto</option>
+     				<option value="Grande">Grande</option>
+     				<option value="Venti">Venti</option>
+   				</optgroup>
+   			</select>
+			   
+			<p></p>
+			<p><FONT id="lab3" Size="1" COLOR="#FF0000" style="display:none">Selecciona un tipo de leche</FONT></p>
+			<form action="" id="formleche" style="display:none;" onchange="ocult2()">
+   				<p id="Lech">Leches.</p>
+   				<input type="radio" name="leche" value="Leche Entera" id="radio1">Leche Entera<br>
+   				<input type="radio" name="leche" value="Leche Deslactosada" id="radio2" >Leche Deslactosada<br>
+   				<input type="radio" name="leche" value="Leche Deslactosada Light" id="radio3" >Leche Deslactosada Light<br>
+   				<input type="radio" name="leche" value="Leche de Soya" id="radio4">Leche de Soya<br>
+				</form>
+		    
+			<p></p>
+			<p><FONT id="lab4" Size="1" COLOR="#FF0000" style="display:none">Selecciona un tipo de jarabe</FONT></p>
+			<form action="" id="formjarab" style="display:none;" onchange="ocult3()">
+   				<p id="Jar">Jarabes.</p>
+   				<input type="radio" name="jarabe" value="Jarabe de Vainilla" id="radi1">Jarabe Vainilla<br>
+   				<input type="radio" name="jarabe" value="Jarabe de Vainilla Sugar Free" id="radi2" >Jarabe Vainilla Sugar Free<br>
+   				<input type="radio" name="jarabe" value="Jarabe de Coco" id="radi3" >Jarabe Coco<br>
+   				<input type="radio" name="jarabe" value="Jarabe de Cinnamon Dolce" id="radi4">Jarabe Cinnamon Dolce<br>
+   				<input type="radio" name="jarabe" value="Jarabe de Menta" id="radi5">Jarabe de Menta<br>
+  			    <input type="radio" name="jarabe" value="Sin Jarabe" id="radi6">Ninguno<br>
+			</form>
+			
+			
+			<p></p>
+
+			
+			<input type="button" id="ord" style="display:none" onclick="validacion()" value="Ordenar" />
+			
+			<!-- <input type="text" id="cod" value=""></input>-->
+			
+			<p id="demo"></p>
+			
+			<script>
+				var pro;
+				var pass=0;
+				var orden;
+			</script>
+			
+			<script>
+			function ocult(){
+				document.getElementById("lab2").style.display="none";
+				document.getElementById("Tam").style.borderColor="#cccccc";
+			}
+			function ocult2(){
+				document.getElementById("lab3").style.display="none";
+				document.getElementById("formleche").style.borderColor="#0000";
+			}
+			function ocult3(){
+				document.getElementById("lab4").style.display="none";
+				document.getElementById("formjarab").style.borderColor="#0000";
+			}
+			function myFunction() {
+    
+    			var x = document.getElementById("Prod").value;
+				document.getElementById("lab2").style.display="none";
+				document.getElementById("Tam").style.border="#0000";
+				ocult();
+				ocult2();
+				ocult3();
+				    
+    			if (x == "Cafe Mocha Blanco" || x == "Caramel Macchiato"){					
+        			
+					document.getElementById("Tam").style.visibility="visible";
+					document.getElementById("formleche").style.display="inline";
+				    document.getElementById("formjarab").style.display="inline";
+				    document.getElementById("ord").style.display="inline";
+					pro = 1;
+					
+    			}
+    			else{
+				    document.getElementById("Tam").style.visibility="visible";
+				    document.getElementById("ord").style.display="inline";
+					document.getElementById("formleche").style.display="none";
+				    document.getElementById("formjarab").style.display="none";
+					pro = 0;
+                }
+			}
+			
+			</script>
+			
+			<script>
+			function pasarVariables(pagina, nombres) {
+				pagina +="?";
+				nomVec = nombres.split(",");
+				for (i=0; i<nomVec.length; i++)
+				pagina += nomVec[i] + "=" + escape(eval(nomVec[i]))+"&";
+				pagina = pagina.substring(0,pagina.length-1);
+				location.href=pagina;
+			}
+			
+			function validacion() {
+				
+				var tama = document.getElementById("Tam").value;
+				var pr = document.getElementById("Prod").value; 
+				if (pro == 1){
+					
+					var radio=[];
+					var ra=[];
+					var va=[];
+					var valor=[];
+					var res = "Ninguno";
+					var res2 = "Ninguno";
+					
+					radio[1] = document.getElementById("radio1").checked;
+					radio[2] = document.getElementById("radio2").checked;
+					radio[3] = document.getElementById("radio3").checked;
+					radio[4] = document.getElementById("radio4").checked;
+					
+					valor[1] = document.getElementById("radio1").value;
+					valor[2] = document.getElementById("radio2").value;
+					valor[3] = document.getElementById("radio3").value;
+					valor[4] = document.getElementById("radio4").value;
+					
+					ra[1] = document.getElementById("radi1").checked;
+					ra[2] = document.getElementById("radi2").checked;
+					ra[3] = document.getElementById("radi3").checked;
+					ra[4] = document.getElementById("radi4").checked;
+					ra[5] = document.getElementById("radi5").checked;
+					ra[6] = document.getElementById("radi6").checked;
+					
+					va[1] = document.getElementById("radi1").value;
+					va[2] = document.getElementById("radi2").value;
+					va[3] = document.getElementById("radi3").value;
+					va[4] = document.getElementById("radi4").value;
+					va[5] = document.getElementById("radi5").value;
+					va[6] = document.getElementById("radi6").value;
+					
+					
+					
+					for (var i=1; i<5; i++){
+						if(radio[i]){
+							res = valor[i]; 
+						}
+					}
+					
+					for (var j=1; j<7; j++){
+						if(ra[j]){
+							res2 = va[j]; 
+						}
+					}
+	
+					
+					if (tama == "0"){
+						document.getElementById("lab2").style.display="inline";
+						document.getElementById("Tam").style.borderColor="red";
+						pass = 1;							
+					}
+					if (res == "Ninguno"){
+						document.getElementById("lab3").style.display="inline";
+						document.getElementById("formleche").style.borderColor="red";							
+					}
+					if (res2 == "Ninguno"){
+						document.getElementById("lab4").style.display="inline";
+						document.getElementById("formjarab").style.borderColor="red";							
+					}
+					orden=("inyal Es un" + pr +"tamaño"+ tama + "con" + res + "y" + res2);
+					
+				}
+				else{
+					if (tama == "0"){
+						document.getElementById("lab2").style.display="inline";
+						document.getElementById("Tam").style.borderColor="red";
+						pass=1;							
+					}
+					orden=("inyal Es un " + pr +" tamano "+ tama);					
+				}
+				if (pass==0){
+					//location.href="javascript:pasarVariables('Page2.html', 'orden')";
+					st = "Page2.html?ordenar="+orden;
+					location.href=st;
+										
+				}
+			}	
+		
+			</script>
+			
+			
+            <p style="margin-top: 50px;">
+                <a target="_blank" href="http://starbucksdelivery.mx/">
+                    Necesitas ayuda presiona aqui...
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
